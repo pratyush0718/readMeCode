@@ -23,8 +23,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 750px;
-  margin-top: 50px; /* Apply margin only at the top */
+  height: 100vh - 30px;
+  margin-top: 30px; /* Apply margin only at the top */
 }
 
 /* App container styling */
@@ -66,9 +66,10 @@ body {
 
 /* Centered content box styling */
 .content-box {
-  margin-top: 30px;
-  width: 50%;
-  max-width: 600px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  width: 60%;
+  max-width: 1000px;
   background: #f7f7f7;
   padding: 30px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Lighter shadow for depth */
@@ -78,6 +79,8 @@ body {
   z-index: 1;
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
   color: #2a2987; /* Darker blue text */
+  max-height: 600px; /* Set a maximum height for the content box */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .content-box:hover {
@@ -85,10 +88,10 @@ body {
   transform: translateY(-5px); /* Slight lift effect on hover */
 }
 
-/* Image preview box styling with vertical scrolling feature */
+/* Image preview box styling */
 .image-preview-box {
   width: 100%;
-  height: 400px;
+  min-height: 300px; /* Set a minimum height when no image is uploaded */
   border: 2px dashed #2E3A8C; /* Darker blue dashed border */
   margin-bottom: 20px;
   display: flex;
@@ -97,8 +100,15 @@ body {
   background-color: rgba(245, 245, 245, 0.9); /* Softer white-gray background */
   border-radius: 10px;
   position: relative; /* Ensure we can position elements inside */
-  overflow-y: auto; /* Enable vertical scrolling if image exceeds the height */
-  overflow-x: hidden; /* Disable horizontal scrolling */
+  overflow: hidden; /* Hide overflow to keep the design clean */
+}
+
+/* Image preview styling (fill width, height is automatic) */
+.image-preview {
+  width: 100%; /* Image will fit the width of the container */
+  height: auto; /* Allow height to scale naturally */
+  max-height: 650px; /* Optional: Limit maximum height to prevent overflow */
+  object-fit: contain; /* Ensure the image keeps its aspect ratio without cutting off */
 }
 
 /* Styling for vertical scrollbars */
@@ -134,13 +144,6 @@ body {
   background-color: rgba(255, 255, 255, 0.8); /* Slightly translucent background */
   font-weight: bold;
   pointer-events: none; /* Ensure it doesn’t interfere with interaction */
-}
-
-/* Image preview styling (width fits container, height scrolls if too tall) */
-.image-preview {
-  width: 100%; /* Image will scale to fit the width of the container */
-  height: auto; /* Height will scale naturally, allowing for scrolling if necessary */
-  object-fit: contain; /* Ensure the image keeps its aspect ratio */
 }
 
 /* Custom styled file input container */
@@ -215,7 +218,6 @@ button.submit-button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 20px;
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
@@ -226,13 +228,68 @@ button.submit-button:hover {
 
 /* Response display box */
 .response-box {
+  width: 96%;
+  max-width: 1000px; /* Limit max width for larger screens */
+  max-height: 200px; /* Set a maximum height */
   margin-top: 20px;
   padding: 15px;
   background-color: rgba(245, 245, 245, 0.9);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  color: #2a2987; /* Darker blue text */
-  white-space: pre-wrap;
+  border: 2px dashed #2E3A8C; /* Dashed border to match image preview */
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure we can position elements inside */
+  overflow: hidden; /* Prevent overflow from affecting the layout */
+}
+
+/* Response label styling */
+.response-label {
+  position: absolute; /* Positioning at the top */
+  top: 10px; /* Space from the top */
+  left: 10px; /* Space from the left */
+  padding: 5px 10px; /* Padding for better spacing */
+  border: 2px solid #2a2987; /* Dotted border to match the response box */
+  border-radius: 8px; /* Rounded edges */
+  font-size: 14px; /* Keep the font size small */
+  color: #2a2987; /* Darker blue text color */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly translucent background */
+  font-weight: bold;
+}
+
+/* Response text styling */
+.response-text {
+  max-height: 150px; /* Space for the label above */
+  overflow-y: auto; /* Enable vertical scrolling for text */
+  white-space: pre-wrap; /* Maintain formatting of the text */
+  color: #2a2987; /* Darker blue text */
+  margin-top: 30px; /* Space below the label */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .content-box, .image-preview-box, .response-box {
+    width: 90%; /* Adjust width for smaller screens */
+    padding: 20px; /* Reduce padding for smaller screens */
+  }
+
+  .toolbar h1 {
+    font-size: 24px; /* Reduce font size for smaller screens */
+  }
+
+  button.submit-button {
+    font-size: 14px; /* Adjust button font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .content-box, .image-preview-box, .response-box {
+    padding: 15px; /* Further reduce padding for very small screens */
+  }
+
+  .toolbar h1 {
+    font-size: 20px; /* Further reduce font size for very small screens */
+  }
+
+  button.submit-button {
+    font-size: 12px; /* Further adjust button font size */
+  }
 }

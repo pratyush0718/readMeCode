@@ -73,10 +73,16 @@ const App = () => {
             className="prompt-input"
           />
           <button onClick={handleSubmit} className="submit-button">Submit</button>
-          {response && <div className="response-box">{response}</div>}
+
+          {/* Always visible response box with label */}
+          <div className="response-box">
+            <div className="response-label">Response</div>
+            <div className="response-text">
+              {response || "Waiting for response..."}
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   );
 };

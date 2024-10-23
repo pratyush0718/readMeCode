@@ -1,0 +1,238 @@
+/* Page background styling */
+body {
+  background: radial-gradient(circle at top, 
+    #fff 0%, 
+    #e6e6ff 40%,  /* Lighter blue as the transition */
+    #b3b3ff 70%,  /* Intermediate blue */
+    #3E4CCF 100%); /* Darker blue at the bottom */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page container styling */
+.page-container {
+  width: 95vw; /* Full width to remove side margins */
+  background-color: #fff; /* White background for the card */
+  border-radius: 30px 30px 0 0; /* Rounded edges only at the top */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 750px;
+  margin-top: 50px; /* Apply margin only at the top */
+}
+
+/* App container styling */
+.app-container {
+  width: 100%;
+  background-color: #f5f5f5; /* Softer white background inside the app */
+  font-family: 'Lato', sans-serif; /* Use Lato for body text */
+  color: #2a2987; /* Darker blue text color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: inherit; /* Ensure it inherits the border-radius of the page-container */
+}
+
+/* Toolbar styling */
+.toolbar {
+  width: 100%;
+  background: linear-gradient(45deg, #2E3A8C, #4F49E4); /* Gradient background using darker blues */
+  padding: 2px 0;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 50px rgba(73, 66, 228, 0.3); /* Shadow for depth */
+  position: relative;
+  z-index: 1;
+  border-radius: 30px 30px 0 0; /* Rounded top corners */
+}
+
+/* Toolbar title styling */
+.toolbar h1 {
+  font-size: 30px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.5); /* 3D text glow */
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+  text-transform: none; /* Remove uppercase transformation */
+}
+
+/* Centered content box styling */
+.content-box {
+  margin-top: 30px;
+  width: 50%;
+  max-width: 600px;
+  background: #f7f7f7;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Lighter shadow for depth */
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+  color: #2a2987; /* Darker blue text */
+}
+
+.content-box:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+/* Image preview box styling with vertical scrolling feature */
+.image-preview-box {
+  width: 100%;
+  height: 400px;
+  border: 2px dashed #2E3A8C; /* Darker blue dashed border */
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(245, 245, 245, 0.9); /* Softer white-gray background */
+  border-radius: 10px;
+  position: relative; /* Ensure we can position elements inside */
+  overflow-y: auto; /* Enable vertical scrolling if image exceeds the height */
+  overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+/* Styling for vertical scrollbars */
+.image-preview-box::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+}
+
+.image-preview-box::-webkit-scrollbar-thumb {
+  background-color: #2E3A8C; /* Darker blue color for scrollbar thumb */
+  border-radius: 10px;
+}
+
+.image-preview-box::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0.9); /* Softer white-gray background */
+}
+
+/* Placeholder text */
+.placeholder {
+  color: #bbb;
+  font-size: 18px;
+}
+
+/* Small hollow box for "Image Preview" */
+.preview-label {
+  position: absolute;
+  top: 10px; /* Position near the top */
+  left: 10px; /* Position near the left */
+  padding: 5px 10px;
+  border: 2px solid #2a2987; /* Hollow border in darker blue */
+  border-radius: 8px; /* Rounded edges */
+  font-size: 14px;
+  color: #2a2987; /* Darker blue text color */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly translucent background */
+  font-weight: bold;
+  pointer-events: none; /* Ensure it doesn’t interfere with interaction */
+}
+
+/* Image preview styling (width fits container, height scrolls if too tall) */
+.image-preview {
+  width: 100%; /* Image will scale to fit the width of the container */
+  height: auto; /* Height will scale naturally, allowing for scrolling if necessary */
+  object-fit: contain; /* Ensure the image keeps its aspect ratio */
+}
+
+/* Custom styled file input container */
+.custom-file-input {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.custom-file-input input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Hide the actual file input */
+  cursor: pointer;
+}
+
+/* Styled choose file button */
+.custom-file-input label {
+  display: block;
+  width: 96.5%;
+  padding: 12px;
+  border: 2px dashed #2E3A8C; /* Darker blue dashed border to match image preview box */
+  background-color: rgba(245, 245, 245, 0.9); /* Softer background color */
+  color: #2E3A8C;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-file-input label:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Prompt input styling */
+.prompt-input {
+  width: 96%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid transparent; /* Start with a transparent border */
+  border-image: linear-gradient(45deg, #2E3A8C, #4F49E4); /* Gradient border */
+  border-image-slice: 1; /* Ensures the gradient applies to the entire border */
+  border-radius: 10px; /* Rounded edges */
+  background-color: rgba(245, 245, 245, 0.9); /* Softer background for a modern look */
+  font-size: 16px;
+  color: #2E3A8C; /* Darker blue text */
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border 0.3s ease; /* Smooth transitions */
+}
+
+.prompt-input:focus {
+  border-color: #4F49E4; /* Highlight border when focused */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Slight shadow effect */
+  outline: none; /* Remove default outline */
+}
+
+.prompt-input:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+}
+
+/* Submit button styling with gradient */
+button.submit-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #2E3A8C, #4F49E4); /* Gradient background */
+  color: white;
+  border: none; /* Remove border */
+  border-radius: 10px; /* Match the border radius of other elements */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+button.submit-button:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Response display box */
+.response-box {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(245, 245, 245, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #2a2987; /* Darker blue text */
+  white-space: pre-wrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

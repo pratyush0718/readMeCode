@@ -64,7 +64,7 @@ body {
   text-transform: none; /* Remove uppercase transformation */
 }
 
-/* Centered content box styling */
+/* Updated content box styling */
 .content-box {
   margin-top: 25px;
   margin-bottom: 15px;
@@ -72,15 +72,16 @@ body {
   max-width: 1000px;
   background: #f7f7f7;
   padding: 30px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* Lighter shadow for depth */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   text-align: center;
   position: relative;
   z-index: 1;
-  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
-  color: #2a2987; /* Darker blue text */
-  max-height: 600px; /* Set a maximum height for the content box */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  color: #2a2987;
+  max-height: 600px;
   overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Disable horizontal scrolling */
 }
 
 .content-box:hover {

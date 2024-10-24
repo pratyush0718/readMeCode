@@ -31,10 +31,13 @@ const App = () => {
     formData.append('prompt', prompt);
 
     try {
-      const result = await axios.post('http://localhost:8000/process/', formData, {
+      const result = await axios.post('http://104.211.14.230:8000/process/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
-      setResponse(result.data.generated_text); // Assuming the backend sends this field
+      
+      const fullResponse = result.data.generated_text;
+      const assistantText = fullResponse.split('assistant').pop().trim();   
+      setResponse(assistantText); // Assuming the backend sends this field
     } catch (error) {
       console.error('Error submitting data:', error);
       setResponse('An error occurred while processing the request.');
